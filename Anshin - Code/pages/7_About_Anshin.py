@@ -159,7 +159,7 @@ with tab3:
     st.markdown("#### 📁 Production Directory Layout Tree")
     st.code(
         """
-QUANTDESK - Financial Analysis Platform/
+Anshin - Code/
 ├── __pycache__/                    # Compiled python bytecode cache files
 ├── pages/                          # Isolated multi-page application interfaces
 │   ├── utils/                      # CENTRAL MODULAR UTILITY LOGIC ENGINE
@@ -172,8 +172,8 @@ QUANTDESK - Financial Analysis Platform/
 │   ├── 3_Stock_Analysis.py         # Corporate fundamentals & momentum indicator dashboard
 │   ├── 4_Stock_Prediction.py       # 30-day tab-matrix mathematical forecasting suite
 │   ├── 5_Sharpe_Ratio.py           # Risk-adjusted portfolio metrics engine
-│   └── 6_Correlation_Heatmap.py    # Symmetric asset dependencies plotting suite
-├── 7_About.py                      # Central project technical documentation (This Page)
+│   ├── 6_Correlation_Heatmap.py    # Symmetric asset dependencies plotting suite
+│   └── 7_About_Anshin.py           # Central project technical documentation (This Page)
 ├── app.png                         # Global banner application asset
 ├── capm_functions.py               # Core vector math operations & data normalization
 ├── SOURCES.txt                     # System repository tracking logs
