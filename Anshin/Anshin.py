@@ -19,7 +19,7 @@ st.write(
 )
 
 # Maintain your local image banner asset pipeline
-st.image("app2.png")
+#st.image("app2.png")
 
 st.write("---")
 st.markdown("## 🛠️ Core Analytical Services & Architecture")
