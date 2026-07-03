@@ -67,7 +67,7 @@ try:
 
     # Calculate CAPM Expected Return
     # Standardizing: Risk-Free Rate = 0%, Market Return = annualized mean of historical range
-    rf = 0.0
+    rf = 0.042
     rm = df['Market_Return'].mean() * 252  # Annualized average market return
     expected_return = rf + (beta_value * (rm - rf))
 

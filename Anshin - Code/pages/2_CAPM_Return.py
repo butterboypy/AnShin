@@ -129,7 +129,7 @@ try:
         st.markdown('### Calculated Beta Values')
         st.dataframe(beta_df, use_container_width = True)
 
-    rf = 0
+    rf = 0.042
     rm = daily_returns_df['sp500'].mean() * 252
 
     return_df = pd.DataFrame()

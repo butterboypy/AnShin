@@ -9,186 +9,207 @@ st.set_page_config(
 st.title("Project Documentation & Engineering Insights 📝")
 st.write("---")
 
-# Three-part tab design separates high-level context from intense math/engineering blocks
 tab1, tab2, tab3 = st.tabs(["📌 Project Overview", "🧮 Quantitative Methodologies", "💻 System Architecture"])
 
 with tab1:
     st.markdown("### 🎯 Why This Project Exists")
     st.write(
-        "Standard retail financial web portals often segment raw market data away from institutional-grade portfolio risk "
-        "engineering frameworks and stochastic predictive modeling suites. This platform was built to bridge that gap—providing "
-        "investors, analysts, and portfolio managers with an integrated environment to monitor real-time asset health, "
-        "quantify systematic and risk-adjusted risk exposures, extract cross-asset dependencies, and evaluate algorithmic future price paths."
+        "Most retail finance apps show raw prices but skip the risk analysis investors actually need. "
+        "Anshin was built to close that gap — giving users a single place to check an asset's risk profile, "
+        "compare it against others, see how correlated it is to the rest of a portfolio, and view a "
+        "data-driven price forecast."
     )
     st.write(
-        "By merging modern software development paradigms with empirical mathematical asset pricing models, this platform converts "
-        "unstructured pricing files into automated, visual quantitative metrics dashboards."
+        "It combines standard financial formulas (CAPM, Beta, Sharpe Ratio) with live market data, so every "
+        "number on the page is calculated in real time rather than pulled from a static file."
     )
-    
+
     st.markdown("### 🔍 Key Objectives")
     st.markdown(
-        "* **Automate Complex Risk Quantifications:** Extract live market returns to calculate standalone, multi-asset comparative, and risk-adjusted parameters instantly.\n"
-        "* **Demystify Advanced Modeling Suites:** Translate rigorous econometric algorithms (like ARIMA), path-dependent probability workflows (like Monte Carlo simulations), and diversification frameworks into visual, interactive chart telemetry.\n"
-        "* **Eliminate Metric Information Friction:** Provide programmatic calculation layers that eliminate manual data pulling, historical timestamp alignment, and matrix cleaning errors.\n"
-        "* **Enforce Enterprise Software Standards:** Prove how clean modular software architecture, decoupled structural logic layers, and separation of concerns apply directly to financial engineering domains."
+        "* **Automate risk calculations:** Pull live returns and compute Beta, Sharpe Ratio, and correlation instantly, without manual spreadsheet work.\n"
+        "* **Make the models understandable:** Show the math (ARIMA, Monte Carlo, CAPM) alongside interactive charts, not just a black-box output.\n"
+        "* **Keep the data clean:** Handle date alignment, missing values, and API errors automatically so users see reliable numbers.\n"
+        "* **Write maintainable code:** Separate data, calculations, and UI into distinct modules, the way a production app would be structured."
     )
 
 with tab2:
-    st.markdown("### 📐 Deep-Dive Financial Mathematics & Feature Walkthrough")
+    st.markdown("### 📐 Financial Mathematics Behind Each Page")
     st.write(
-        "To ensure the application functions as a robust quantitative tool rather than a generic chart tracker, "
-        "independent financial mathematical architectures were engineered directly into each dashboard pipeline:"
+        "Each page runs its own calculation, not just a chart. Here's what each one computes and why."
     )
     st.write("---")
-    
+
     # 1_CAPM_Beta
-    st.markdown("### 📊 1. Individual Stock Systemic Risk (CAPM Beta Page)")
+    st.markdown("### 📊 1. Individual Stock Risk (CAPM Beta Page)")
     st.markdown("**Use:**")
     st.write(
-        "Isolates and evaluates an individual asset's historical sensitivity to macro-market movements. It was included to "
-        "give investors a direct metric showing whether an equity magnifies or dampens overall stock market volatility trends."
+        "Shows how sensitive one stock is to overall market movements — whether it swings more or less "
+        "than the market on average."
     )
-    st.markdown("**Quantitative Mechanics:**")
+    st.markdown("**Mechanics:**")
     st.write(
-        "The system processes a rolling historical covariance matrix matching the selected equity's daily returns against the S&P 500 benchmark index. "
-        "Beta ($$\beta$$) is derived by dividing that asset-market covariance by the variance of the market benchmark itself:"
+        "Beta is the covariance between the stock's daily returns and the S&P 500's daily returns, divided "
+        "by the market's variance:"
     )
     st.latex(r"\beta = \frac{Cov(R_a, R_m)}{Var(R_m)}")
     st.write(
-        "The calculated expected return ($$E(R_a)$$) scales this coefficient against the annualized average market return premium ($$R_m$$), assuming a zero baseline risk-free rate ($$R_f = 0$$):"
+        "Expected return then scales that Beta against the market's annualized return, using the current "
+        "10-Year Treasury yield (Rf ≈ 4.2%) as the risk-free baseline:"
     )
     st.latex(r"E(R_a) = R_f + \beta \cdot (R_m - R_f)")
     st.write("---")
 
     # 2_CAPM_Return
-    st.markdown("### 📈 2. Capital Asset Pricing Model (Multi-Asset CAPM Return Page)")
+    st.markdown("### 📈 2. Multi-Asset CAPM Comparison (CAPM Return Page)")
     st.markdown("**Use:**")
     st.write(
-        "Extends systemic risk logic to a multi-asset comparative table layout. It automates simultaneous price normalization "
-        "and portfolio risk calculations across an array of equities to evaluate real-time capital allocation trade-offs."
+        "Runs the same CAPM analysis across multiple stocks side by side, so you can compare expected "
+        "returns and risk levels across a basket of assets."
     )
-    st.markdown("**Quantitative Mechanics:**")
+    st.markdown("**Mechanics:**")
     st.write(
-        "The asset arrays undergo an automated temporal synchronization. First, historical index closes are normalized by anchoring them to their initial pricing coordinate ($$t_0$$) to track real percentage gains relative to the market baseline:"
+        "Prices are normalized to a common starting point so percentage gains are directly comparable:"
     )
     st.latex(r"\text{Normalized Price}_t = \frac{\text{Price}_t}{\text{Price}_{t_0}}")
     st.write(
-        "The background math engine leverages standard ordinary least squares linear regression via polynomial fitting across the arrays to extract individual asset alphas ($$\alpha$$) and betas ($$\beta$$) simultaneously:"
+        "Each stock's Alpha and Beta are then estimated with a simple linear regression against the market:"
     )
     st.latex(r"R_{a,t} = \alpha + \beta \cdot R_{m,t} + \epsilon_t")
     st.write("---")
 
     # 3_Stock_Analysis
-    st.markdown("### 🔍 3. Real-Time Market Intelligence (Stock Analysis Page)")
+    st.markdown("### 🔍 3. Company Fundamentals & Technicals (Stock Analysis Page)")
     st.markdown("**Use:**")
     st.write(
-        "Delivers a holistic overview of fundamental corporate health and classic technical indicators. It pairs underlying accounting metrics "
-        "with directional volume trends to contextualize short-term momentum shifts against longer macro asset horizons."
+        "Gives a quick snapshot of a company's financial health (Market Cap, EPS, P/E, Debt-to-Equity) "
+        "alongside a price chart and momentum indicators."
     )
-    st.markdown("**Quantitative Mechanics:**")
+    st.markdown("**Mechanics:**")
     st.write(
-        "The interface parses institutional-grade financial indices (including Market Cap, EPS, P/E, Debt-to-Equity, and Quick Ratios) "
-        "while running real-time mathematical calculations for the **Relative Strength Index (RSI)** using a standard 14-day tracking frame:"
+        "RSI (Relative Strength Index) is calculated over a 14-day window to flag whether a stock looks "
+        "overbought or oversold:"
     )
     st.latex(r"\text{RSI} = 100 - \left[ \frac{100}{1 + \frac{\text{Average Gain}}{\text{Average Loss}}} \right]")
     st.write("---")
 
     # 4_Stock_Prediction
-    st.markdown("### 🔮 4. Advanced Predictive Models Dashboard (Stock Prediction Page)")
+    st.markdown("### 🔮 4. 30-Day Price Forecast (Stock Prediction Page)")
     st.markdown("**Use:**")
     st.write(
-        "Projects asset valuation paths over a fixed 30-day horizon using an advanced forecasting pipeline. It helps users visualize "
-        "pure statistical trajectories alongside stochastic real-world risk variance bounds."
+        "Projects where a stock's price might go over the next 30 days, using three different modeling "
+        "approaches so you can compare a smooth trend line against a more realistic, volatile path."
     )
-    st.markdown("**Quantitative Mechanics:**")
+    st.markdown("**Mechanics:**")
+    st.write("Three models run side by side:")
     st.write(
-        "This dashboard integrates a **Combined Algorithmic Hybrid Ensemble Engine** that resolves the limitations of standard standalone models. "
-        "The forecasting pipeline operates through three distinct structural methods:"
-    )
-    st.write(
-        "1. **Pure ARIMA Model:** Fits an AutoRegressive Integrated Moving Average model $$\\text{ARIMA}(2, d, 2)$$, where $$d$$ represents "
-        "the dynamic differencing order computed via an automated Augmented Dickey-Fuller (ADF) stationarity check. This isolates the smooth macro directional mean trend line."
+        "1. **ARIMA:** Fits an ARIMA(2, d, 2) model, where d (the differencing order) is chosen automatically "
+        "using an Augmented Dickey-Fuller stationarity test. This captures the underlying trend."
     )
     st.write(
-        "2. **Pure Monte Carlo Simulation:** Generates a stochastic random risk walk based on geometric Brownian motion. It models unstructured daily market shocks by sampling from a normal distribution based on the asset's historical drift ($$\mu$$) and daily volatility factor ($$\sigma$$):"
+        "2. **Monte Carlo:** Simulates a random price path using geometric Brownian motion, sampling daily "
+        "shocks from a normal distribution based on the stock's historical drift (μ) and volatility (σ):"
     )
     st.latex(r"S_t = S_{t-1} \cdot e^{\left((\mu - \frac{1}{2}\sigma^2) + \sigma \cdot Z_t\right)} \quad \text{where } Z_t \sim N(0,1)")
     st.write(
-        "3. **The Hybrid Ensemble (Recommended):** Combines both worlds. It takes the structured statistical regression trend vector produced by the ARIMA model "
-        "and multiplies it by the Monte Carlo stochastic random shock factor at each chronological point. This preserves a realistic, volatile market path while keeping the prediction bound to logical underlying financial trends:"
+        "3. **Hybrid (recommended):** Multiplies the ARIMA trend by the Monte Carlo shock factor at each step — "
+        "keeping the forecast anchored to the trend while still reflecting realistic day-to-day volatility:"
     )
     st.latex(r"\text{Hybrid Projection}_t = \text{ARIMA Baseline}_t \cdot e^{\left(-\frac{1}{2}\sigma^2 + \sigma \cdot Z_t\right)}")
     st.write("---")
 
     # 5_Sharpe_Ratio
-    st.markdown("### 🏆 5. Portfolio Risk & Sharpe Ratio Profiling (Sharpe Ratio Page)")
+    st.markdown("### 🏆 5. Risk-Adjusted Return (Sharpe Ratio Page)")
     st.markdown("**Use:**")
     st.write(
-        "Evaluates asset efficiency on an annualized risk-adjusted basis. This page was included to determine whether an equity's "
-        "excess performance return premium is driven by high-yield investment choice or exposure to dangerous underlying portfolio variance."
+        "Answers the question: is this stock's return actually good, once you account for how much risk "
+        "it took to get there?"
     )
-    st.markdown("**Quantitative Mechanics:**")
+    st.markdown("**Mechanics:**")
     st.write(
-        "The engine calculates total annualized returns alongside annualized volatility (scaling standard deviation across 252 active trading days). "
-        "The **Sharpe Ratio** is derived by subtracting the user-defined Risk-Free Treasury Rate ($$R_f$$) from the total expected asset return, divided by the annualized standard deviation:"
+        "Sharpe Ratio subtracts the risk-free rate from the annualized return, then divides by annualized "
+        "volatility (standard deviation, scaled to 252 trading days):"
     )
     st.latex(r"\text{Sharpe Ratio} = \frac{\text{Annualized } R_a - R_f}{\sigma_{\text{annualized}}}")
+    st.write(
+        "A higher Sharpe Ratio means better return per unit of risk. Anything above 1.0 is generally "
+        "considered good; above 2.0 is very strong."
+    )
     st.write("---")
 
     # 6_Correlation_Heatmap
-    st.markdown("### 🔥 6. Cross-Asset Pearson Correlation Diagnostics (Correlation Heatmap Page)")
+    st.markdown("### 🔥 6. Cross-Asset Correlation (Correlation Heatmap Page)")
     st.markdown("**Use:**")
     st.write(
-        "Evaluates cross-asset dependencies across customized equity baskets. It provides a quick look at multi-collinearity, helping "
-        "investors identify true diversification opportunities and avoid overlapping systemic asset exposures."
+        "Shows how closely different stocks move together, which helps identify real diversification versus "
+        "stocks that just look different but move in tandem."
     )
-    st.markdown("**Quantitative Mechanics:**")
+    st.markdown("**Mechanics:**")
     st.write(
-        "The system extracts the daily fractional returns of all active equities and constructs a symmetric tracking matrix. It uses "
-        "the **Pearson Product-Moment Correlation Coefficient** to check how tightly any two distinct asset series move in relation to one another:"
+        "Pairwise Pearson correlation is calculated across daily returns for every stock in the selected basket:"
     )
     st.latex(r"\rho_{X,Y} = \frac{Cov(X,Y)}{\sigma_X \cdot \sigma_Y}")
+    st.write(
+        "Values near 1 mean two stocks move almost identically; values near 0 mean little relationship — "
+        "useful for spotting genuine diversification opportunities."
+    )
+    st.write("---")
+
+    # 8_Portfolio_Insights
+    st.markdown("### 🧭 7. Cross-Stock Ranking (Portfolio Insights Page)")
+    st.markdown("**Use:**")
+    st.write(
+        "Pulls the same Beta, return, volatility, and Sharpe metrics used elsewhere in the app, but computes "
+        "them across the full stock universe at once — ranking assets and sectors instead of viewing them one at a time."
+    )
+    st.markdown("**Mechanics:**")
+    st.write(
+        "Reuses the CAPM and Sharpe formulas above across every selected ticker, then aggregates results into "
+        "a risk-return scatter plot and a sector-level summary table, with a short written takeaway generated "
+        "from the current live numbers."
+    )
 
 with tab3:
-    st.markdown("### 🏗️ Software Engineering Design Pattern & Architecture")
+    st.markdown("### 🏗️ Code Structure")
     st.write(
-        "This application is built entirely on **clean modular coding principles**. Instead of utilizing messy monolithic script files where "
-        "data ingestion, statistical analysis, and UI formatting code are dangerously tangled together, this codebase enforces a strict **Separation of Concerns**:"
+        "The app is split into separate files by responsibility — data fetching, calculations, and page "
+        "layout are kept apart instead of mixed into one script. This makes each piece easier to test, "
+        "debug, and reuse."
     )
-    
-    st.markdown("#### 📁 Production Directory Layout Tree")
+
+    st.markdown("#### 📁 Project Layout")
     st.code(
         """
 Anshin - Code/
-├── __pycache__/                    # Compiled python bytecode cache files
-├── pages/                          # Isolated multi-page application interfaces
-│   ├── utils/                      # CENTRAL MODULAR UTILITY LOGIC ENGINE
-│   │   ├── __pycache__/            # Cached utility execution binaries
-│   │   ├── __init__.py             # Standard package directory declaration marker
-│   │   ├── model_train.py          # Back-end algorithmic calculations (ARIMA, MC)
-│   │   └── plotly_figure.py        # Layout canvas definitions & dark theme styling
-│   ├── 1_CAPM_Beta.py              # Individual asset risk analysis component
-│   ├── 2_CAPM_Return.py            # Multi-stock capital asset pricing component
-│   ├── 3_Stock_Analysis.py         # Corporate fundamentals & momentum indicator dashboard
-│   ├── 4_Stock_Prediction.py       # 30-day tab-matrix mathematical forecasting suite
-│   ├── 5_Sharpe_Ratio.py           # Risk-adjusted portfolio metrics engine
-│   ├── 6_Correlation_Heatmap.py    # Symmetric asset dependencies plotting suite
-│   └── 7_About_Anshin.py           # Central project technical documentation (This Page)
-├── app.png                         # Global banner application asset
-├── capm_functions.py               # Core vector math operations & data normalization
-├── SOURCES.txt                     # System repository tracking logs
-└── Trading_Guide_App.py            # Root application landing page deployment script
+├── pages/
+│   ├── utils/
+│   │   ├── __init__.py          # Package marker
+│   │   ├── model_train.py       # ARIMA + Monte Carlo forecasting logic
+│   │   └── plotly_figure.py     # Chart styling and layout helpers
+│   ├── 1_CAPM_Beta.py           # Single-stock Beta and CAPM return
+│   ├── 2_CAPM_Return.py         # Multi-stock CAPM comparison
+│   ├── 3_Stock_Analysis.py      # Fundamentals + technical indicators
+│   ├── 4_Stock_Prediction.py    # 30-day forecasting dashboard
+│   ├── 5_Sharpe_Ratio.py        # Risk-adjusted return ranking
+│   ├── 6_Correlation_Heatmap.py # Pairwise correlation matrix
+│   ├── 7_About_Anshin.py        # This documentation page
+│   └── 8_Portfolio_Insights.py  # Cross-stock ranking and takeaways
+├── capm_functions.py            # Shared Beta/return/plotting functions
+├── requirements.txt             # Pinned dependencies
+├── SOURCES.txt                  # Repository tracking notes
+└── Anshin.py                    # App entry point
         """,
         language="text"
     )
-    
-    st.markdown("#### 🔄 Data Pipeline Pipeline Execution Flow")
+
+    st.markdown("#### 🔄 How Data Flows Through the App")
     st.markdown(
-        "1. **Ingestion Layer:** The user inputs an equity selection or target time window in the active frontend view (`pages/*.py`). The interface dispatches a data call downstream to download live ticker frames.\n"
-        "2. **Transformation Layer:** Raw data matrices pass directly into `pages/utils/model_train.py` or `capm_functions.py`. The back-end calculation scripts run vector computations, execute stationarity checks, and isolate statistical prediction frames.\n"
-        "3. **Aesthetic Mapping Layer:** The finalized mathematical datasets transfer into `pages/utils/plotly_figure.py`. The graphing script strips index files and enforces high-contrast text layers and custom plot styles.\n"
-        "4. **Rendering Layer:** The output figure objects return cleanly to the front-end interface, which draws them onto the Streamlit canvas."
+        "1. **Fetch:** The user picks a stock or time range on a page, which triggers a live call to yfinance.\n"
+        "2. **Calculate:** Raw price data is passed into `capm_functions.py` or `model_train.py`, which run the "
+        "actual math (returns, Beta, Sharpe, ARIMA, Monte Carlo).\n"
+        "3. **Format:** Results are handed to `plotly_figure.py`, which builds the charts and tables with "
+        "consistent dark-theme styling.\n"
+        "4. **Render:** Streamlit displays the finished charts and tables on the page."
     )
 
 st.write("---")
-st.caption("📝 Project System Documentation Module • Version 1.2.0 • Engineered by Krishnendu Das")
+st.caption("📝 Project Documentation • Version 1.2.0 • Built by Krishnendu Das")
