@@ -191,8 +191,8 @@ Anshin - Code/
 │   ├── 4_Stock_Prediction.py    # 30-day forecasting dashboard
 │   ├── 5_Sharpe_Ratio.py        # Risk-adjusted return ranking
 │   ├── 6_Correlation_Heatmap.py # Pairwise correlation matrix
-│   ├── 7_About_Anshin.py        # This documentation page
-│   └── 8_Portfolio_Insights.py  # Cross-stock ranking and takeaways
+│   ├── 7_Portfolio_Insights.py  # Cross-stock ranking and takeaways
+│   └── 8_About_Anshin.py        # This documentation page
 ├── capm_functions.py            # Shared Beta/return/plotting functions
 ├── requirements.txt             # Pinned dependencies
 ├── SOURCES.txt                  # Repository tracking notes
