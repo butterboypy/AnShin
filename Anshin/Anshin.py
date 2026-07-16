@@ -8,7 +8,7 @@ st.set_page_config(
 
 st.title("Anshin 🍜")
 st.write("---")
-st.header("Welcome to Anshin, Navigate Complexity Tension-Free!")
+st.header("Welcome to Anshin — Navigate Markets, Tension-Free!")
 st.write(
     "Anshin is a Quantitative Financial Analysis Platform built using Python - Streamlit & yfinance. "
     "It is a full-stack equity analytics trading guide platform, engineered for Market Clarity, "

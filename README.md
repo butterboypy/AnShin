@@ -1,13 +1,12 @@
 # Anshin — Quantitative Equity Analytics & Risk Intelligence Platform
 
 **Live App:** [anshin.streamlit.app](https://anshin.streamlit.app/)
+
 **Repo:** [github.com/butterboypy/AnShin](https://github.com/butterboypy/AnShin)
 
 > **Anshin (安心)** — a Japanese term for structured peace of mind. Applied here to financial risk: turning raw market data into clear, decision-ready analysis.
 
-![Anshin Portfolio Insights](assets/hero_portfolio_insights.png)
-
-![Anshin Demo](assets/anshin_demo.gif)
+![Anshin Demo](Anshin/streamlit1.gif)
 
 ---
 
@@ -30,6 +29,8 @@ The app has 8 pages: CAPM Beta, CAPM Return, Stock Analysis, Stock Prediction, S
 ---
 
 ## 2. Key Findings & Insights
+
+![Anshin Portfolio Insights](Anshin/portfolio_insights.png)
 
 *Note: all figures below are a snapshot from live data at the time of writing. Since Anshin pulls real-time prices, running the app today will show different — but always current — numbers.*
 
@@ -85,13 +86,13 @@ Anshin runs each dataset through a live, multi-stage analytical pipeline:
 ## 5. Dashboard Screenshots
 
 **CAPM Beta — Systemic Risk Regression**
-![CAPM Beta](assets/capm_beta.png)
+![CAPM Beta](Anshin/capm_beta_image.png)
 
 **Stock Prediction — Hybrid Ensemble Forecast**
-![Stock Prediction](assets/stock_prediction.png)
+![Stock Prediction](Anshin/stock_prediction_image.png)
 
 **Correlation Heatmap — Cross-Asset Dependency Matrix**
-![Correlation Heatmap](assets/correlation_heatmap.png)
+![Correlation Heatmap](Anshin/correlation_heatmap_image.png)
 
 ---
 
@@ -119,8 +120,8 @@ Anshin/
 │   ├── 4_Stock_Prediction.py    # 30-day forecasting dashboard
 │   ├── 5_Sharpe_Ratio.py        # Risk-adjusted return ranking
 │   ├── 6_Correlation_Heatmap.py # Pairwise correlation matrix
-│   ├── 7_About_Anshin.py        # Full technical documentation
-│   └── 8_Portfolio_Insights.py  # Cross-stock ranking and takeaways
+│   ├── 7_Portfolio_Insights.py  # Full technical documentation
+│   └── 8_About_Anshin.py        # Cross-stock ranking and takeaways
 ├── capm_functions.py            # Shared Beta/return/plotting functions
 ├── requirements.txt             # Pinned dependencies
 └── Anshin.py                    # App entry point
