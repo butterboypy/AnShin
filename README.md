@@ -1,6 +1,6 @@
 # Anshin — Quantitative Equity Analytics & Risk Intelligence Platform
 
-**Live App:** [anshin.streamlit.app](https://anshin.streamlit.app/)
+**Live App:** [Explore Anshin](https://anshin.streamlit.app/)
 
 **Repo:** [github.com/butterboypy/AnShin](https://github.com/butterboypy/AnShin)
 
